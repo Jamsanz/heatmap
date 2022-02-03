@@ -89,7 +89,7 @@ const App = ():JSX.Element => {
   return (
     <div className="grid place-items-center w-full h-[100vh]">
       <div className="w-full px-12 md:px-0 md:w-[60vw]">
-        {dateData && 
+        {dateData ? 
           <CalendarHeatmap
             startDate={new Date('2019-01-01')}
             endDate={new Date('2019-12-31')}
@@ -102,6 +102,8 @@ const App = ():JSX.Element => {
               return 'negative'
             }}
           />
+          :
+          <p className="text-center">Loading...</p>
         }
       </div>
     </div>
