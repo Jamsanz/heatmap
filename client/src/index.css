@@ -17,14 +17,23 @@ code {
     monospace;
 }
 
-.react-calendar-heatmap .negative{
+.react-calendar-heatmap .negative-1{
+  fill: #FFB5B5;
+}
+.react-calendar-heatmap .negative-2{
   fill: #F87171;
+}
+.react-calendar-heatmap .negative-3{
+  fill: #CD1818;
+}
+
+.react-calendar-heatmap .positive-1{
+  fill: #D3ECA7;
 }
 
 .react-calendar-heatmap .positive-2{
-  fill: #8cc665;
+  fill: #9BE9A8;
 }
-
 .react-calendar-heatmap .positive-3{
-  fill: #44a340;
+  fill: #216E39;
 }

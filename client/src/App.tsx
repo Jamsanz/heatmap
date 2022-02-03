@@ -98,8 +98,12 @@ const App = ():JSX.Element => {
             showWeekdayLabels
             classForValue={(value)=>{
               if (!value) return 'color-empty';
-              if(value.creditTotal > value.debitTotal) return 'positive-2';
-              return 'negative'
+              if(value.creditTotal > value.debitTotal) {
+                const percent = (value.creditTotal / value.total) * 100;
+                return percent <= 33 ? 'positive-1' : percent <= 66 ? 'positive-2' : 'positive-3';
+              };
+              const percent = (value.debitTotal / value.total) * 100;
+              return percent <= 33 ? 'negative-1' : percent <= 66 ? 'negative-2' : 'negative-3'
             }}
           />
           :
