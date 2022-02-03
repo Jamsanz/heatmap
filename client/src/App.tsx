@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CalendarHeatmap from 'react-calendar-heatmap';
 import IData from './interfaces/IData';
+import ReactTooltip from 'react-tooltip';
 import 'react-calendar-heatmap/dist/styles.css';
 import IResult from './interfaces/IResult';
 
@@ -50,12 +51,19 @@ const App = ():JSX.Element => {
   
 
   const title = (value: IResult): string => {
-    if (value?.total === undefined) return `No transaction`
+    if (value?.total === undefined) return `No transaction`;
     return `
     ${value?.date} 
     Credit: ${numberWithCommas(Math.floor(value?.creditTotal))}, 
     Debit: ${numberWithCommas(Math.floor(value?.debitTotal))}, 
     Total: ${numberWithCommas(Math.floor(value?.total))}`
+  }
+
+  const getDataTooltip = (value: any) =>{
+    return {
+      "data-place" : "top", 
+      "data-tip" : title(value),
+    }
   }
 
   useEffect(()=>{
@@ -95,6 +103,7 @@ const App = ():JSX.Element => {
             endDate={new Date('2019-12-31')}
             values={sort(dateData)}
             titleForValue={title}
+            tooltipDataAttrs={getDataTooltip}
             showWeekdayLabels
             classForValue={(value)=>{
               if (!value) return 'color-empty';
@@ -109,6 +118,7 @@ const App = ():JSX.Element => {
           :
           <p className="text-center">Loading...</p>
         }
+        <ReactTooltip />
       </div>
     </div>
   );
